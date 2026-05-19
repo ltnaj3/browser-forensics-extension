@@ -1,0 +1,30 @@
+{
+  "manifest_version": 3,
+  "name": "Browser Forensics Extension",
+  "version": "0.1.0",
+  "description": "Local browser forensics recorder with future endpoint integration.",
+  "permissions": [
+    "storage",
+    "downloads",
+    "management",
+    "webRequest",
+    "webNavigation",
+    "tabs"
+  ],
+  "host_permissions": [
+    "<all_urls>"
+  ],
+  "background": {
+    "service_worker": "background-recorder.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content-inspector.js"],
+      "run_at": "document_start"
+    }
+  ],
+  "action": {
+    "default_title": "Browser Forensics Extension"
+  }
+}
